@@ -1,6 +1,7 @@
 <!doctype html>
 
 <head>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
 	<meta charset="utf-8">
 	<script>
 		function setSearchEngine() {
@@ -12,30 +13,28 @@
 				"ask": "https://www.ask.com/web"
 			};	
 			let form = document.getElementById('searchForm');
-			// Grabs the group of radio inputs
-			let selectedSite = document.querySelector("input[name=engine]:checked");
-			// Grabs the selected URL(value)
-			let action = actions[selectedSite.value];
+			let selectedSite = document.querySelector("input[name=engine]:checked"); // Grabs the group of radio inputs
+			let action = actions[selectedSite.value]; // Grabs the selected URL(value)
 			form.setAttribute("action", action);
 		}
 		
     	window.addEventListener("load", function(){
 			let form = document.getElementById('searchForm');
-			// Adding event listener that waits for submit from our search form, and then runs setSearchEngine.
-			form.addEventListener("submit", setSearchEngine);
+			form.addEventListener("submit", setSearchEngine); // Adding event listener that waits for submit from our search form, and then runs setSearchEngine.
 		});
 	</script>
 </head>
 
 <body>
 	<form id="searchForm">
-		<label><input type="text" name="q"></label><br>
+		<h1 id="title">Search Pro</h1><br>
+		<label><input type="text" name="q" id="search"></label><br>
 
-		<label><input type="radio" name="engine" value="google"/>Google</label><br>
-		<label><input type="radio" name="engine" value="duckDuckGo"/>DuckDuckGo</label><br>
-		<label><input type="radio" name="engine" value="bing"/>Bing</label><br>
-		<label><input type="radio" name="engine" value="ask"/>Ask</label><br>
+		<label><input type="radio" name="engine" value="google"/>Google</label>
+		<label><input type="radio" name="engine" value="duckDuckGo"/>DuckDuckGo</label>
+		<label><input type="radio" name="engine" value="bing"/>Bing</label>
+		<label><input type="radio" name="engine" value="ask"/>Ask</label>
 
-		<input type="submit" value="Go!">
+		<input type="submit" value="Go!" id="button">
 	</form>
 </body>

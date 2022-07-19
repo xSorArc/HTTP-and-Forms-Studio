@@ -1,0 +1,14 @@
+body {
+    background-color: darkslategrey;
+    text-align: center;  
+    padding: 15%; 
+    color: cadetblue;
+}
+
+#title {
+    color: cadetblue;
+}
+
+#button:hover {
+    background-color:coral
+}
