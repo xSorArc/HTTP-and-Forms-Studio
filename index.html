@@ -4,7 +4,7 @@
 	<link rel="stylesheet" type="text/css" href="style.css"/>
 	<meta charset="utf-8">
 	<script>
-		function setSearchEngine() {
+		const setSearchEngine = (e) => {
 			console.log("Load event ran");
 			let actions = {
 				"google": "https://www.google.com/search",
@@ -14,14 +14,28 @@
 			};	
 			let form = document.getElementById('searchForm');
 			let selectedSite = document.querySelector("input[name=engine]:checked"); // Grabs the group of radio inputs
-			let action = actions[selectedSite.value]; // Grabs the selected URL(value)
-			form.setAttribute("action", action);
+			let searchTerm = document.querySelector("input[name=q]").value;
+			let action = actions[selectedSite.value]; // Grabs the selected URL(value) with bracket notation
+			form.setAttribute("action", action); 
+				
+				if(searchTerm.trim() === "") {
+					e.preventDefault();
+					alert("Search text required!");
+					return;
+				}
+				
+				if(selectedSite.value === null) {	// Doesn't work correctly!!!                  X X X X X X X X X X X X X X X X X X X X
+					e.preventDefault();
+					alert("Engine required!");
+					return;
+				}
 		}
 		
     	window.addEventListener("load", function(){
 			let form = document.getElementById('searchForm');
 			form.addEventListener("submit", setSearchEngine); // Adding event listener that waits for submit from our search form, and then runs setSearchEngine.
 		});
+
 	</script>
 </head>
 
